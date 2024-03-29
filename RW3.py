@@ -2,7 +2,7 @@ import os
 
 file_list = ['1.txt', '2.txt']
 
-file_list.sort(key=lambda x: sum(1 for line in open(x)), reverse=True)
+file_list.sort(key=lambda x: sum(1 for line in open(x, 'r')), reverse=True)
 
 with open('result.txt', 'w') as result_file:
     for file in file_list:

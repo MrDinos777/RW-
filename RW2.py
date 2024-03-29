@@ -1,11 +1,12 @@
-import os
-
-file_list = ['1.txt', '2.txt']
-
-file_list.sort(key=lambda x: sum(1 for line in open(x)), reverse=True)
-
-with open('result.txt', 'w') as result_file:
-    for file in file_list:
-        with open(file, 'r') as current_file:
-            result_file.write(f'{file}\n{sum(1 for line in current_file)}\n')
-            result_file.write(current_file.read())
+def get_shop_list_by_dishes(dishes, person_count):
+    shop_list = {}
+    for dish in dishes:
+        for ingredient in cook_book[dish]:
+            ingredient_name = ingredient['ingredient_name']
+            quantity = ingredient['quantity']
+            measure = ingredient['measure']
+            if ingredient_name not in shop_list:
+                shop_list[ingredient_name] = {'measure': measure, 'quantity': quantity}
+            else:
+                shop_list[ingredient_name]['quantity'] *= person_count
+    return shop_list
